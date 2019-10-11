@@ -129,7 +129,7 @@ body{
 
 .home_desc_bg{
 
-	background-image: url("samplegates.jpg");
+	background-image: url("bg.jpg");
 	min-height: 500px;
 	background-repeat: no-repeat;
   background-position: center;
@@ -137,7 +137,7 @@ body{
 }
 
 .home_desc_bg .home_desc{
-	background-color: rgb(0,0,0,0.85);
+	background-color: rgb(0,0,0,0.8);
 	margin: 20px;
 	min-height: 420px;
 	text-align: center;
