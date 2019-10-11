@@ -1,0 +1,249 @@
+/*
+Dark maroon - #900
+Light marron - #990000
+*/
+
+@font-face {
+font-family: "ArialLight";
+font-style: normal;
+font-weight: normal;
+/*src: local('Harlow Solid Italic'),*/
+src: url("ArialMTStd-LightCond.otf"); /*format('woff');*/
+}
+
+main{
+	background-color: grey;
+}
+
+header{
+}
+
+.row .header_logo_bg{
+	background-color: #600000;
+	text-align: center;
+}
+
+.header_logo{
+	 height: auto;
+	 width: 100%;
+	padding-top: 8px;
+  margin-bottom: 5px;
+    display: inline-block;
+	max-height: 90px;
+	max-width: 81px;
+}
+
+.row .header_FCRE{
+	font-family: ArialLight;
+	font-weight: bold;
+	font-size: 40px;
+	color: white;
+	background-color: #600000;
+	vertical-align: middle;
+}
+
+.row .bg-danger{
+	background-color: #45A29E;
+}
+
+.row .header_socmed{
+	 color:white;
+	 font-weight: bold;
+	 font-size: 9.5px;
+	 background-color: #600000;
+	 padding: 10px;
+	 height:100%;
+	font-family: Arial;
+}
+
+.header_socmed .socmed_logo{
+	height: 15px;
+	background-color: white;
+	margin-right: 5px;
+	border-radius: 5px;
+}
+
+.container > .row{
+	background-color: #600000;
+	vertical-align: middle;
+}
+
+body{
+	font-style: sans-serif;
+}
+
+#navbar_strip{
+	background-color: white;
+}
+
+#navbar_options a{
+	color: #4A3C31;
+}
+
+#navbar_options li ul li a{
+	color: #0B0C10;
+}
+
+#navbar_options a:hover{
+	color: white;
+	background-color: #980000;
+
+}
+
+.footer .row{
+	background-color: #600000;
+	font-family: "Calibri"
+}
+
+.footer-title{
+	color: lightgray;
+    font-weight: bold;
+	font-size: 120%;
+	font-family: ArialLight
+}
+
+.footerlinks{
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	padding: 6px;
+}
+
+.footerlinks:hover{
+	background-color: white;
+	color: #600000;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+#footer_logo{
+	font-family: "ArialLight";
+	padding-left: 15px;
+	color: white;
+}
+
+.tiny-footer > p{
+	font-family: "ArialLight";
+	color: lightgray;
+}
+
+.home_desc_bg{
+
+	background-image: url("samplegates.jpg");
+	min-height: 500px;
+	background-repeat: no-repeat;
+  background-position: center;
+	background-size: cover;
+}
+
+.home_desc_bg .home_desc{
+	background-color: rgb(0,0,0,0.85);
+	margin: 20px;
+	min-height: 420px;
+	text-align: center;
+	color: white;
+	padding: 20px;
+	font-family: "Calibri";
+	transition: background-color 0.5s ease;
+	margin-top: 10px;
+}
+
+.home_desc_bg .home_desc:hover{
+	background-color: rgb(0,0,0,0.9);
+}
+
+.home_desc_bg .page_title{
+	background-color: rgb(0,0,0,0.75);
+	margin: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+	color: white;
+	padding: 8px;
+	font-size: 28px;
+	transition: background-color 0.5s ease;
+	font-family: "ArialLight";
+	font-weight: bold;
+}
+
+.home_desc_bg .page_title:hover{
+	background-color: rgb(0,0,0,0.85);
+}
+
+.home_desc_bg .home_desc .secondary_page_heading{
+	font-family: "ArialLight";
+	font-size: 22px;
+}
+
+.home_desc_bg .home_desc .home_content{
+	font-family: "Arial";
+}
+
+/*Template*/
+
+/*Button*/
+
+.inputform .submitform{
+	color: black;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 10px;
+	margin-top: 20px;
+	background-color: white;
+}
+
+.inputform .submitform:hover{
+	color: white;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 10px;
+	margin-top: 20px;
+	background-color: #980000;
+	color: white;
+}
+
+.inputform .inputtext{
+	color: black;
+}
+
+
+/*Table*/
+.home_desc_bg .home_desc .hover_table{
+	font-family: "ArialLight";
+	text-align: left;
+}
+
+.home_desc_bg .home_desc .hover_table thead tr th{
+	text-align: left;
+}
+
+.home_desc_bg .home_desc .hover_table tbody tr:hover{
+	background-color: white;
+	color: #600000;
+}
+
+.home_desc_bg .home_desc .hover_table tbody tr .select_row a{
+	text-decoration: none;
+	color: white;
+}
+
+.home_desc_bg .home_desc .hover_table tbody tr .select_row a:hover{
+	text-decoration: none;
+	color: black;
+}
+
+
+.home_desc_bg .home_desc .hover_table tbody tr .select_row a:visited{
+	text-decoration: none;
+	color:inherit;
+}
+
+.home_desc_bg .home_desc .report_table {
+	font-family: "Arial";
+	text-align: left;
+}
+
+.home_desc_bg .home_desc .report{
+	font-family: "Arial";
+}
