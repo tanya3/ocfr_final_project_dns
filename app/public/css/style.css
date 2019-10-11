@@ -182,25 +182,22 @@ body{
 
 /*Button*/
 
-.inputform .submitform{
-	color: black;
-	padding: 5px;
-	padding-left: 10px;
-	padding-right: 10px;
+.home_desc .btn-primary{
+	color: white;
 	border-radius: 10px;
-	margin-top: 20px;
-	background-color: white;
+	background-color: black;
+	border-color: white;
 }
 
-.inputform .submitform:hover{
+.home_desc .btn-primary:hover{
 	color: white;
-	padding: 5px;
-	padding-left: 10px;
-	padding-right: 10px;
-	border-radius: 10px;
-	margin-top: 20px;
-	background-color: #980000;
+	background-color: #600000;
 	color: white;
+	border-color: white;
+}
+
+.home_desc .btn_add{
+	margin-bottom: 20px;
 }
 
 .inputform .inputtext{
@@ -246,4 +243,20 @@ body{
 
 .home_desc_bg .home_desc .report{
 	font-family: "Arial";
+}
+
+
+/* Form */
+
+.home_desc form{
+	margin-top: 50px;
+}
+
+.home_desc .form-control{
+	background-color: black;
+	border-color: grey
+}
+
+.home_desc form label{
+	color: grey;
 }
