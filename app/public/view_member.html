@@ -97,57 +97,33 @@
 
           <div class="home_content">
 
-            <table class='table hover_table report_table'>
-              <thead>
-                <tr><th>ID</th><th>Name</th><th>Radio Number</th><th>Station Number</th><th>Status</th><th></th><th></th>
-          	  </thead>
+            <div id="memberViewApp">
 
-          	  <tbody>
+              <table class='table hover_table report_table'>
+                <thead>
+                  <tr><th>ID</th><th>Name</th><th>Radio Number</th><th>Station Number</th><th>Status</th><th></th><th></th>
+            	  </thead>
 
-                <tr>
-                  <td>M0001</td>
-          			  <td>Steve Rogers</td>
-                  <td>841</td>
-                  <td>8</td>
-                  <td>Active</td>
-                  <td>
-                    <button type="submit" class="btn btn-primary button_table">Edit</button>
-                  </td>
-                  <td>
-                    <button type="submit" class="btn btn-primary button_table">Delete</button>
-                  </td>
-          		  </tr>
+            	  <tbody>
 
-                <tr>
-                  <td>M0002</td>
-          			  <td>Tony Stark</td>
-                  <td>841</td>
-                  <td>8</td>
-                  <td>Active</td>
-                  <td>
-                    <button type="submit" class="btn btn-primary button_table">Edit</button>
-                  </td>
-                  <td>
-                    <button type="submit" class="btn btn-primary button_table">Delete</button>
-                  </td>
-          		  </tr>
+                  <tr v-for="m in members">
+                    <td>{{ m.memberId }}</td>
+                    <td>{{ m.firstName }} {{ m.lastName }}</td>
+                    <td>{{ m.radioNumber }}</td>
+                    <td>{{ m.stationNumber }}</td>
+                    <td>{{ m.isActive }}</td>
+                    <td>
+                      <button type="submit" class="btn btn-primary button_table">Edit</button>
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-primary button_table">Delete</button>
+                    </td>
+            		  </tr>
 
-                <tr>
-                  <td>M0003</td>
-          			  <td>Natasha Romanoff</td>
-                  <td>841</td>
-                  <td>8</td>
-                  <td>Active</td>
-                  <td>
-                    <button type="submit" class="btn btn-primary button_table">Edit</button>
-                  </td>
-                  <td>
-                    <button type="submit" class="btn btn-primary button_table">Delete</button>
-                  </td>
-          		  </tr>
+            	  </tbody>
+              </table>
 
-          	  </tbody>
-            </table>
+            </div>
 
             <form class="memberInputForm">
 
@@ -257,6 +233,8 @@
         </footer>
 
 	</div>
-
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="js/member.app.js"></script>
 </body>
 </html>
