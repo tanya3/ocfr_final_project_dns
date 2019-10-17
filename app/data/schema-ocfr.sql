@@ -14,8 +14,9 @@ CREATE TABLE Members (
 );
 
 CREATE TABLE Certifications (
-  certId int,
+  certId varchar(50),
   certName varchar(255),
+  certAgency varchar(225),
   stdExp int,
  	PRIMARY KEY(certId)
 );
