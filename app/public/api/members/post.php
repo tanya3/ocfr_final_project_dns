@@ -8,8 +8,8 @@ $db = DbConnection::getConnection();      //:: indicates that its a static funct
 // Step 2: Prepare & run the query
 $stmt = $db->prepare(
   'INSERT INTO Members
-  (firstName, lastName, radioNumber, stationNumber)
-  VALUES (?,?,?,?)'
+  (memberId, firstName, lastName, radioNumber, stationNumber)
+  VALUES (?,?,?,?,?)'
 );      //$db is a method of PHP's PDO (Persistent Data Object) class (masked by DbConnection class) and prepare is a function of PDO that returns a PDOStatement object.
 
 $guid = Uuid::uuid4()->toString();
