@@ -125,43 +125,47 @@
 
             </div>
 
-            <form class="memberInputForm">
+            <div id="memberAddApp">
 
-              <div class="form-group row">
-                <label for="member_fname" class="col-sm-4 col-form-label">First Name</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" id="member_fname" placeholder="First Name">
+              <form class="memberInputForm" @submit.prevent="handleSubmit">
+
+                <div class="form-group row">
+                  <label for="member_fname" class="col-sm-4 col-form-label">First Name</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_fname" placeholder="First Name" v-model="recordMember.firstName">
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group row">
-                <label for="member_lname" class="col-sm-4 col-form-label">Last Name</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" id="member_lname" placeholder="Last Name">
+                <div class="form-group row">
+                  <label for="member_lname" class="col-sm-4 col-form-label">Last Name</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_lname" placeholder="Last Name" v-model="recordMember.lastName">
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group row">
-                <label for="member_rno" class="col-sm-4 col-form-label">Radio Number</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" id="member_rno" placeholder="Radio Number">
+                <div class="form-group row">
+                  <label for="member_rno" class="col-sm-4 col-form-label">Radio Number</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_rno" placeholder="Radio Number" v-model="recordMember.radioNumber">
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group row">
-                <label for="member_sno" class="col-sm-4 col-form-label">Station Number</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" id="member_sno" placeholder="Station Number">
+                <div class="form-group row">
+                  <label for="member_sno" class="col-sm-4 col-form-label">Station Number</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_sno" placeholder="Station Number" v-model="recordMember.stationNumber">
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group row">
-                <div class="col-sm-12">
-                  <button type="submit" class="btn btn-primary button_table btn_add">Add New Member</button>
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary button_table btn_add">Add New Member</button>
+                  </div>
                 </div>
-              </div>
 
-            </form>
+              </form>
+
+            </div>
 
           </div>
 
@@ -235,6 +239,7 @@
 	</div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="js/member.app.js"></script>
+  <script src="js/memberView.app.js"></script>
+  <script src="js/memberAdd.app.js"></script>
 </body>
 </html>
