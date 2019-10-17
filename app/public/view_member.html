@@ -113,7 +113,7 @@
                     <td>{{ m.stationNumber }}</td>
                     <td>{{ m.isActive }}</td>
                     <td>
-                      <button type="submit" class="btn btn-primary button_table">Edit</button>
+                      <button type="submit" class="btn btn-primary button_table" @click="handleEditMemberClick(m)">Edit</button>
                     </td>
                     <td>
                       <button type="submit" class="btn btn-primary button_table">Delete</button>
@@ -151,7 +151,7 @@
 
             <!-- <div id="memberAddApp"> -->
 
-              <form class="memberInputForm" @submit.prevent="handleSubmit">
+              <form class="memberInputForm" v-if="!editMemberClick" @submit.prevent="handleSubmit">
 
                 <div class="form-group row">
                   <label for="member_fname" class="col-sm-4 col-form-label">First Name</label>
@@ -184,6 +184,45 @@
                 <div class="form-group row">
                   <div class="col-sm-12">
                     <button type="submit" class="btn btn-primary button_table btn_add">Add New Member</button>
+                  </div>
+                </div>
+
+              </form>
+
+              <form class="memberInputForm" v-if="editMemberClick" @submit.prevent="handleEditMember">
+
+                <div class="form-group row">
+                  <label for="member_fname" class="col-sm-4 col-form-label">First Name</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_fname" placeholder="First Name" v-model="editMemberClick.firstName">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_lname" class="col-sm-4 col-form-label">Last Name</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_lname" placeholder="Last Name" v-model="editMemberClick.lastName">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_rno" class="col-sm-4 col-form-label">Radio Number</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_rno" placeholder="Radio Number" v-model="editMemberClick.radioNumber">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_sno" class="col-sm-4 col-form-label">Station Number</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_sno" placeholder="Station Number" v-model="editMemberClick.stationNumber">
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary button_table btn_add">Edit Member</button>
                   </div>
                 </div>
 
