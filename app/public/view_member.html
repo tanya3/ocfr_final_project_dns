@@ -97,7 +97,7 @@
 
           <div class="home_content">
 
-            <div id="memberViewApp">
+            <div id="memberListApp">
 
               <table class='table hover_table report_table'>
                 <thead>
@@ -106,7 +106,7 @@
 
             	  <tbody>
 
-                  <tr v-for="m in members">
+                  <tr v-for="m in members" @click="handleRowClick(m)">
                     <td>{{ m.memberId }}</td>
                     <td>{{ m.firstName }} {{ m.lastName }}</td>
                     <td>{{ m.radioNumber }}</td>
@@ -123,9 +123,33 @@
             	  </tbody>
               </table>
 
-            </div>
+            <!-- </div> -->
 
-            <div id="memberAddApp">
+            <!-- <div id="memberViewApp"> -->
+
+              <table class="table" v-if="member.length!=0">
+
+                <tbody>
+
+                  <tr>
+                    <th>ID</th><td>{{ member.memberId }}</td>
+                  </tr>
+                  <tr>
+                    <th>Name</th><td>{{ member.firstName }} {{ member.lastName }}</td>
+                  </tr>
+                  <tr>
+                    <th>Radio Number</th><td>{{ member.radioNumber }}</td>
+                  </tr>
+                  <tr>
+                    <th>Station Number</th><td>{{ member.stationNumber }}</td>
+                  </tr>
+                </tbody>
+
+              </table>
+
+            <!-- </div> -->
+
+            <!-- <div id="memberAddApp"> -->
 
               <form class="memberInputForm" @submit.prevent="handleSubmit">
 
@@ -239,7 +263,6 @@
 	</div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="js/memberView.app.js"></script>
-  <script src="js/memberAdd.app.js"></script>
+  <script src="js/memberList.app.js"></script>
 </body>
 </html>

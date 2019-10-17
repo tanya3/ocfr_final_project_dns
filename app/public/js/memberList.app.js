@@ -1,10 +1,16 @@
-var memberAddApp = new Vue({
-  el: '#memberAddApp',
+var memberListApp = new Vue({
+  el: '#memberListApp',
   data: {
     members: [],
-    recordMember: {},
+    member: {},
+    recordMember: {}
   },
   methods: {
+    fetchMembers() {
+      fetch('api/members/')
+      .then(response => response.json())
+      .then(json => { memberListApp.members = json })
+    },
     handleSubmit(event) {
       fetch('api/members/post.php', {
         method:'POST',
@@ -14,7 +20,7 @@ var memberAddApp = new Vue({
         }
       })
       .then( response => response.json() )
-      .then( json => { memberAddApp.members.push(json[0]) })
+      .then( json => { memberListApp.members.push(json[0]) })
       .catch( err => {
         console.error('RECORD POST ERROR:');
         console.error(err);
@@ -30,8 +36,12 @@ var memberAddApp = new Vue({
         radioNumber: ''
       }
     },
-  }, // end methods
+    handleRowClick(member) {
+      this.member=member;
+    }
+  },
   created() {
+    this.fetchMembers();
     this.handleReset();
   }
 });
