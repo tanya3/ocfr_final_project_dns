@@ -97,41 +97,31 @@
 
           <div class="home_content">
 
+            <div id="certificationViewApp">
             <table class='table hover_table report_table'>
               <thead>
-                <tr><th>Certification ID</th><th>Agency</th><th>Name</th><th>Expiration Period</th><th></th><th></th>
-          	  </thead>
+                <tr><th>Certification ID</th><th>Agency</th><th>Certification</th><th>Expiration Period</th><th></th><th></th>
+              </thead>
 
-          	  <tbody>
+              <tbody>
 
-                <tr>
-                  <td>C0001</td>
-          			  <td>CPR</td>
-                  <td>CPR for Healthcare Providers</td>
-                  <td>2 years</td>
+                <tr v-for="c in certifications">
+                  <td>{{ c.certificationId }}</td>
+                  <td></td>
+                  <td>{{ c.certification }}</td>
+                  <td>{{ c.expirationDate }}</td>
+
                   <td>
                     <button type="submit" class="btn btn-primary button_table">Edit</button>
                   </td>
                   <td>
                     <button type="submit" class="btn btn-primary button_table">Delete</button>
                   </td>
-          		  </tr>
+                </tr>
 
-                <tr>
-                  <td>C0002</td>
-          			  <td>Athens Technical College</td>
-                  <td>Firefighter 1</td>
-                  <td>3 years</td>
-                  <td>
-                    <button type="submit" class="btn btn-primary button_table">Edit</button>
-                  </td>
-                  <td>
-                    <button type="submit" class="btn btn-primary button_table">Delete</button>
-                  </td>
-          		  </tr>
-
-          	  </tbody>
+              </tbody>
             </table>
+          </div>
 
             <form class="certInputForm">
 
@@ -241,6 +231,8 @@
         </footer>
 
 	</div>
-
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="js/certificationView.app.js"></script>
 </body>
 </html>
