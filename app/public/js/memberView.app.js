@@ -8,6 +8,9 @@ var memberViewApp = new Vue({
       fetch('api/members/')
       .then(response => response.json())
       .then(json => { memberViewApp.members = json })
+    },
+    handleRowClick(member) {
+      this.member=member;
     }
   },
   created() {

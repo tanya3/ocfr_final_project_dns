@@ -28,3 +28,5 @@ CREATE TABLE MemberCert (
 	FOREIGN KEY (memberId) REFERENCES Members(memberId),
 	FOREIGN KEY (certId) REFERENCES Certifications(certId)
 );
+
+SELECT * FROM Members;
