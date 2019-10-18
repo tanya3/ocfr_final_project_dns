@@ -1,7 +1,7 @@
 // Vue.prototype.$editMember='0'
 
-var memberListApp = new Vue({
-  el: '#memberListApp',
+var memberViewApp = new Vue({
+  el: '#memberViewApp',
   data: {
     members: [],
     member: {},
@@ -13,7 +13,7 @@ var memberListApp = new Vue({
     fetchMembers() {
       fetch('api/members/')
       .then(response => response.json())
-      .then(json => { memberListApp.members = json })
+      .then(json => { memberViewApp.members = json })
     },
     handleSubmit(event) {
       fetch('api/members/post.php', {
@@ -24,7 +24,7 @@ var memberListApp = new Vue({
         }
       })
       .then( response => response.json() )
-      .then( json => { memberListApp.members.push(json[0]) })
+      .then( json => { memberViewApp.members.push(json[0]) })
       .catch( err => {
         console.error('RECORD POST ERROR:');
         console.error(err);
