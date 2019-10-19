@@ -40,12 +40,33 @@ var updateCertApp = new Vue({
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         }
-      })
+      }).then(response => {alert('Assigned!')})
       console.log("done");
+      this.handleReset();
     },
     calculateEndDate(startDate, stdExp) {
-      moment(startDate);
-      return moment().add(stdExp, 'y').format('MM/DD/YYYY')
+      return moment(startDate).add(stdExp, 'years').format('YYYY-MM-DD')
+    },
+    handleReset() {
+      this.member = {
+        memberId: '',
+        firstName: '',
+        lastName: '',
+        stationNumber: '',
+        radioNumber: ''
+      }
+      this.cert = {
+        certId: '',
+        certName: '',
+        certAgency: '',
+        stdExp: ''
+      },
+      this.member_cert = {
+        memberId: '',
+        certId: '',
+        startDate: '',
+        endDate: ''
+      }
     }
   },
   created() {

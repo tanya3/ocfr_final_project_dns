@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-	   View Member
+	   Update Certifications
 	</title>
 
 	<link href="css/style.css" rel="stylesheet">
@@ -119,7 +119,7 @@
                       <td>{{ m.firstName }} {{ m.lastName }}</td>
                       <td>{{ m.radioNumber }}</td>
                       <td>{{ m.stationNumber }}</td>
-                      <td>{{ m.isActive }}</td>
+                      <td>{{ m.member_status }}</td>
               		  </tr>
 
               	  </tbody>
@@ -212,7 +212,7 @@
                     <div class="form-group row">
                       <label for="std_exp" class="col-sm-4 col-form-label">Expiration Period</label>
                       <div class="col-sm-5">
-                        <input type="text" class="form-control" id="std_exp" placeholder="Expiration Period" v-model="cert.stdExp">
+                        <input type="text" class="form-control" id="std_exp" placeholder="Expiration Period" v-model="cert.stdExp" readonly>
                       </div>
                     </div>
 

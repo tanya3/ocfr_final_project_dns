@@ -115,47 +115,117 @@
                     <td>{{ m.firstName }} {{ m.lastName }}</td>
                     <td>{{ m.radioNumber }}</td>
                     <td>{{ m.stationNumber }}</td>
-                    <td>{{ m.isActive }}</td>
+                    <td>{{ m.member_status }}</td>
                     <td>
                       <button type="submit" class="btn btn-primary button_table" @click="handleEditMemberClick(m)">Edit</button>
                     </td>
                     <td>
-                      <button type="submit" class="btn btn-primary button_table">Delete</button>
+                      <button type="submit" class="btn btn-primary button_table" @click="handleDeleteMember(m)">Delete</button>
                     </td>
             		  </tr>
 
             	  </tbody>
               </table>
 
+              <hr>
             <!-- </div> -->
 
             <!-- <div id="memberViewApp"> -->
 
-              <table class="table" v-if="member.length!=0">
+              <div class="row">
 
-                <tbody>
+                <div class="col-lg-3">
+                </div>
 
-                  <tr>
-                    <th>ID</th><td>{{ member.memberId }}</td>
-                  </tr>
-                  <tr>
-                    <th>Name</th><td>{{ member.firstName }} {{ member.lastName }}</td>
-                  </tr>
-                  <tr>
-                    <th>Radio Number</th><td>{{ member.radioNumber }}</td>
-                  </tr>
-                  <tr>
-                    <th>Station Number</th><td>{{ member.stationNumber }}</td>
-                  </tr>
-                </tbody>
+                <div class="col-lg-6">
 
-              </table>
+                  <table class="table" v-if="member">
+
+                    <tbody>
+
+                      <tr>
+                        <th>ID</th><td>{{ member.memberId }}</td>
+                      </tr>
+                      <tr>
+                        <th>Name</th><td>{{ member.firstName }} {{ member.lastName }}</td>
+                      </tr>
+                      <tr>
+                        <th>Radio Number</th><td>{{ member.radioNumber }}</td>
+                      </tr>
+                      <tr>
+                        <th>Station Number</th><td>{{ member.stationNumber }}</td>
+                      </tr>
+                      <tr>
+                        <th>Status</th><td>{{ member.member_status }}</td>
+                      </tr>
+                      <tr>
+                        <th>Address</th><td>{{ member.member_address }}</td>
+                      </tr>
+                      <tr>
+                        <th>Email Address</th><td>{{ member.member_email }}</td>
+                      </tr>
+                      <tr>
+                        <th>Phone Number</th><td>{{ member.member_phoneNumber }}</td>
+                      </tr>
+                      <tr>
+                        <th>Date of Birth</th><td>{{ member.member_dob }}</td>
+                      </tr>
+                      <tr>
+                        <th>Gender</th><td>{{ member.member_gender }}</td>
+                      </tr>
+                    </tbody>
+
+                  </table>
+
+                </div>
+
+                <div class="col-lg-3">
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-lg-2">
+                </div>
+
+                <div class="col-lg-8">
+
+                  <table class="table" v-if="member">
+
+                    <thead>
+                      <tr><th>Certification ID</th><th>Certification Name</th><th>Certification Agency</th><th>Start Date</th><th>End Date</th></tr>
+                    </thead>
+
+                    <tbody>
+
+                      <tr v-for="m in member_cert">
+
+                        <td>{{ m.certId }}</td>
+                        <td>{{ m.certName }}</td>
+                        <td>{{ m.certAgency }}</td>
+                        <td>{{ m.startDate }}</td>
+                        <td>{{ m.endDate }}</td>
+                      </tr>
+
+                    </tbody>
+
+                  </table>
+
+                </div>
+
+                <div class="col-lg-2">
+                </div>
+
+              </div>
 
             <!-- </div> -->
 
             <!-- <div id="memberAddApp"> -->
 
-              <form class="memberInputForm" v-if="!editMemberClick" @submit.prevent="handleSubmit">
+              <hr>
+
+              <form class="memberInputForm" v-if="!editMember" @submit.prevent="handleSubmit">
 
                 <div class="form-group row">
                   <label for="member_fname" class="col-sm-4 col-form-label">First Name</label>
@@ -186,6 +256,48 @@
                 </div>
 
                 <div class="form-group row">
+                  <label for="member_status" class="col-sm-4 col-form-label">Status</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_status" placeholder="Active/Inactive" v-model="recordMember.member_status">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_address" class="col-sm-4 col-form-label">Address</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_address" placeholder="Address" v-model="recordMember.member_address">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_email" class="col-sm-4 col-form-label">Email Address</label>
+                  <div class="col-sm-5">
+                    <input type="email" class="form-control" id="member_email" placeholder="Email Address" v-model="recordMember.member_email">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_pno" class="col-sm-4 col-form-label">Phone Number</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_pno" placeholder="Phone Number" v-model="recordMember.member_phoneNumber">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_dob" class="col-sm-4 col-form-label">Date of Birth</label>
+                  <div class="col-sm-5">
+                    <input type="date" class="form-control" id="member_dob" placeholder="DoB" v-model="recordMember.member_dob">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_gender" class="col-sm-4 col-form-label">Gender</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_gender" placeholder="M/F" v-model="recordMember.member_gender">
+                  </div>
+                </div>
+
+                <div class="form-group row">
                   <div class="col-sm-12">
                     <button type="submit" class="btn btn-primary button_table btn_add">Add New Member</button>
                   </div>
@@ -193,36 +305,77 @@
 
               </form>
 
-              <form class="memberInputForm" v-if="editMemberClick" @submit.prevent="handleEditMember">
+              <form class="memberInputForm" v-if="editMember" @submit.prevent="handleEditMember">
 
                 <div class="form-group row">
                   <label for="member_fname" class="col-sm-4 col-form-label">First Name</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_fname" placeholder="First Name" v-model="editMemberClick.firstName">
+                    <input type="text" class="form-control" id="member_fname" placeholder="First Name" v-model="editMember.firstName">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_lname" class="col-sm-4 col-form-label">Last Name</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_lname" placeholder="Last Name" v-model="editMemberClick.lastName">
+                    <input type="text" class="form-control" id="member_lname" placeholder="Last Name" v-model="editMember.lastName">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_rno" class="col-sm-4 col-form-label">Radio Number</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_rno" placeholder="Radio Number" v-model="editMemberClick.radioNumber">
+                    <input type="text" class="form-control" id="member_rno" placeholder="Radio Number" v-model="editMember.radioNumber">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_sno" class="col-sm-4 col-form-label">Station Number</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_sno" placeholder="Station Number" v-model="editMemberClick.stationNumber">
+                    <input type="text" class="form-control" id="member_sno" placeholder="Station Number" v-model="editMember.stationNumber">
                   </div>
                 </div>
 
+                <div class="form-group row">
+                  <label for="member_status" class="col-sm-4 col-form-label">Status</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_status" placeholder="Active/Inactive" v-model="editMember.member_status">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_address" class="col-sm-4 col-form-label">Address</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_address" placeholder="Address" v-model="editMember.member_address" ref="member_address">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_email" class="col-sm-4 col-form-label">Email Address</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_email" placeholder="Email Address" v-model="editMember.member_email">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_pno" class="col-sm-4 col-form-label">Phone Number</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_pno" placeholder="Phone Number" v-model="editMember.member_phoneNumber">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_dob" class="col-sm-4 col-form-label">Date of Birth</label>
+                  <div class="col-sm-5">
+                    <input type="date" class="form-control" id="member_dob" placeholder="DoB" v-model="editMember.member_dob">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="member_gender" class="col-sm-4 col-form-label">Gender</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="member_gender" placeholder="M/F" v-model="editMember.member_gender">
+                  </div>
+                </div>
 
                 <div class="form-group row">
                   <div class="col-sm-12">

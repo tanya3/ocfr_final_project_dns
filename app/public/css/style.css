@@ -260,3 +260,7 @@ body{
 .home_desc form label{
 	color: grey;
 }
+
+.home_desc hr {
+	border: 1px dashed #404040	
+}
