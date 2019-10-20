@@ -262,5 +262,9 @@ body{
 }
 
 .home_desc hr {
-	border: 1px dashed #404040	
+	border: 1px dashed #404040
+}
+
+.filter select{
+	color: black;
 }

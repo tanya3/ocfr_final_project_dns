@@ -103,6 +103,22 @@
 
             <div id="expCertApp">
 
+              <div class="filter row">
+                <div class="col-lg-4">
+                </div>
+                <div class="col-lg-2">
+                  <p>Choose Certification</p>
+                </div>
+                <div class="col-lg-2">
+                  <select v-model="filter.cert">
+                    <option value="">All Certifications</option>
+                    <option v-for="c in certifications">{{ c.certName }}</option>
+                  </select>
+                </div>
+                <div class="col-lg-4">
+                </div>
+              </div>
+
               <table class='table hover_table report_table'>
                 <thead>
                   <tr><th>Member ID</th><th>Member Name</th><th>Certification ID</th><th>Certification Name</th><th>Certification Agency</th><th>Start Date</th><th>Expiration Date</th></tr>
@@ -110,7 +126,7 @@
 
             	  <tbody>
 
-                  <tr v-for="m in member_cert" v-if="!certActive(m.endDate)">
+                  <tr v-for="m in member_cert" v-if="!certActive(m.endDate) && (filter.cert=='' || filter.cert == m.certName)">
                     <td>{{ m.memberId }}</td>
                     <td>{{ m.firstName }} {{ m.lastName }}</td>
             			  <td>{{ m.certId }}</td>
