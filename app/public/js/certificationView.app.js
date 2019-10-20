@@ -2,6 +2,7 @@ var certificationViewApp = new Vue({
   el: '#certificationViewApp',
   data: {
     certifications: [],
+    deleteMember: {},
   },
   methods: {
     fetchCertifications() {
@@ -12,6 +13,25 @@ var certificationViewApp = new Vue({
     handleRowClick(certification) {
       this.certification=certification;
     },
+    handleReset() {
+          this.recordMember = {
+            memberId: '',
+            firstName: '',
+            lastName: '',
+            stationNumber: '',
+            radioNumber: ''
+          }
+          this.editMember = null
+          this.deleteMember = {
+            memberId: '',
+            firstName: '',
+            lastName: '',
+            stationNumber: '',
+            radioNumber: ''
+          }
+          this.member=null
+        },
+
     handleDeleteCert(c) {
       this.deleteCert=c;
       fetch('api/certifications/certDelete.php', {
@@ -26,6 +46,7 @@ var certificationViewApp = new Vue({
       .then(response => {alert('Deleted!')})
       this.handleReset();
     }
+
 },
   created() {
     this.fetchCertifications();
