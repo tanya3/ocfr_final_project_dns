@@ -101,30 +101,29 @@
 
           <div class="home_content">
 
-            <table class='table hover_table report_table'>
-              <thead>
-                <tr><th>Member ID</th><th>Member Name</th><th>Certification Name</th><th>Expiry Date</th>
-          	  </thead>
+            <div id="expCertApp">
 
-          	  <tbody>
+              <table class='table hover_table report_table'>
+                <thead>
+                  <tr><th>Member ID</th><th>Member Name</th><th>Certification ID</th><th>Certification Name</th><th>Certification Agency</th><th>Start Date</th><th>Expiration Date</th></tr>
+            	  </thead>
 
-                <tr>
-                  <td>M0001</td>
-          			  <td>Steve Rogers</td>
-                  <td>CPR</td>
-                  <td>01/09/2019</td>
-          		  </tr>
+            	  <tbody>
 
-                <tr>
-                  <td>M0002</td>
-          			  <td>Tony Stark</td>
-                  <td>Firefighter 1</td>
-                  <td>03/06/2019</td>
-          		  </tr>
+                  <tr v-for="m in member_cert" v-if="!certActive(m.endDate)">
+                    <td>{{ m.memberId }}</td>
+                    <td>{{ m.firstName }} {{ m.lastName }}</td>
+            			  <td>{{ m.certId }}</td>
+                    <td>{{ m.certName }}</td>
+                    <td>{{ m.certAgency }}</td>
+                    <td>{{ m.startDate }}</td>
+                    <td>{{ m.endDate }}</td>
+            		  </tr>
 
+            	  </tbody>
+              </table>
 
-          	  </tbody>
-            </table>
+            </div>
 
           </div>
 
@@ -196,6 +195,10 @@
         </footer>
 
 	</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="js/expCert.app.js"></script>
 
 </body>
 </html>

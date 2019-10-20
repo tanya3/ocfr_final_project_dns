@@ -6,7 +6,7 @@ var memberViewApp = new Vue({
     recordMember: {},
     deleteMember: {},
     editMember: null,
-    member_cert: {}
+    member_cert: [],
   },
   methods: {
     fetchMembers() {
@@ -55,7 +55,15 @@ var memberViewApp = new Vue({
       this.member=member;
       fetch('api/members/fetchCert.php/?memberId='+member.memberId)
       .then(response => response.json())
-      .then(json => { memberViewApp.member_cert = json })
+      .then(json => { memberViewApp.member_cert = json });
+    },
+    certActive(endDate) {
+      if(moment(endDate)<moment()) {
+        return 0;
+      }
+      else {
+        return 1;
+      }
     },
     handleEditMemberClick(m) {
       this.editMember=m;

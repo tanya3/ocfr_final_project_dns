@@ -194,7 +194,7 @@
                   <table class="table" v-if="member">
 
                     <thead>
-                      <tr><th>Certification ID</th><th>Certification Name</th><th>Certification Agency</th><th>Start Date</th><th>End Date</th></tr>
+                      <tr><th>Certification ID</th><th>Certification Name</th><th>Certification Agency</th><th>Start Date</th><th>End Date</th><th>Status</th></tr>
                     </thead>
 
                     <tbody>
@@ -206,6 +206,8 @@
                         <td>{{ m.certAgency }}</td>
                         <td>{{ m.startDate }}</td>
                         <td>{{ m.endDate }}</td>
+                        <td v-if="certActive(m.endDate)">Active</td>
+                        <td v-if="!certActive(m.endDate)">Inactive</td>
                       </tr>
 
                     </tbody>
