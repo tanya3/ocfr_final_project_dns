@@ -125,7 +125,7 @@
           	  </tbody>
             </table>
 
-            <form class="certInputForm">
+            <form class="certInputForm" v-if="!editCert" @submit.prevent="handleSubmit">
 
               <div class="form-group row">
                 <label for="cert_agency" class="col-sm-4 col-form-label">Agency</label>
@@ -145,13 +145,6 @@
                 <label for="cert_exp" class="col-sm-4 col-form-label">Expiration Period</label>
                 <div class="col-sm-5">
                   <input type="text" class="form-control" id="cert_exp" placeholder="Expiration Period">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="member_sno" class="col-sm-4 col-form-label">Station Number</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" id="member_sno" placeholder="Station Number">
                 </div>
               </div>
 
