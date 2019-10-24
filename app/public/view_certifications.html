@@ -156,6 +156,37 @@
 
             </form>
 
+            <form class="certInputForm" v-if="editCert" @submit.prevent="handleEditCertification">
+
+              <div class="form-group row">
+                <label for="cert_agency" class="col-sm-4 col-form-label">Agency</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="cert_agency" placeholder="Agency" v-model="editCert.certAgency">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="cert_name" class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="cert_name" placeholder="Name" v-model="editCert.certName">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="cert_exp" class="col-sm-4 col-form-label">Expiration Period</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="cert_exp" placeholder="Expiration Period" v-model="editCert.stdExp">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <button type="submit" class="btn btn-primary button_table btn_add">Add New Certification</button>
+                </div>
+              </div>
+
+            </form>
+
           </div>
 
 				</div>

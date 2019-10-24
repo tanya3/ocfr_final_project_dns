@@ -3,6 +3,7 @@ var certificationViewApp = new Vue({
   data: {
     certifications: [],
     cert: null,
+    editCert: null,
     deleteCert: {},
     recordCert: {},
   },
@@ -30,6 +31,10 @@ var certificationViewApp = new Vue({
     },
     handleRowClick(certification) {
       this.certification=certification;
+      fetch('api/certifications/fetctMem.php/?certId='+certification.certId)
+      .then(response => response.json())
+      .then(json => { certificationViewApp.member_cert = json });
+    },
     },
     handleReset() {
           this.recordCert = {
@@ -47,7 +52,37 @@ var certificationViewApp = new Vue({
           }
           this.cert=null
         },
-
+      handleResetAfterDelete() {
+          this.cert = null;
+        },
+      handleRowClick(certification) {
+          this.cert=certification;
+          fetch('api/certifications/fetchMem.php/?certId='+certification.certId)
+          .then(response => response.json())
+          .then(json => { certificationViewApp.member_cert = json });
+         },
+        certActive(endDate) {
+          if(moment(endDate)<moment()) {
+            return 0;
+          }
+          else {
+            return 1;
+          }
+        },
+        handleEditCertificationClick(c) {
+            this.editCert=c;
+            this.$refs.certification_address.focus();
+          },
+      handleEditCertification(event) {
+          fetch('api/certifications/certEdit.php', {
+            method:'POST',
+            body: JSON.stringify(this.editCert),
+            headers: {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          }).then(response => {alert('Updated!')})
+          this.handleReset();
+        },
     handleDeleteCert(c) {
       this.deleteCert=c;
       fetch('api/certifications/certDelete.php', {
@@ -66,5 +101,6 @@ var certificationViewApp = new Vue({
 },
   created() {
     this.fetchCertifications();
+    this.handleReset();
   }
 });
