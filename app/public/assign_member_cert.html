@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-	   Members with Expired Certifications
+	   Assign Certifications
 	</title>
 
 	<link href="css/style.css" rel="stylesheet">
@@ -73,14 +73,14 @@
 					</li>
 
           <li class="dropdown">
-						<a href="update_cert.html">Update Certification</a>
+						<a href="assign_member_cert.html">Assign Certification</a>
 					</li>
 
           <li class="dropdown dropdown_list">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reporting <span class="caret"></span></a>
 
 						<ul class="dropdown-menu">
-							<li><a href="exp_cert.html">Expired Certifications</a></li>
+							<li><a href="exp_cert_report.html">Expired Certifications</a></li>
 							<li><a  href="members_by_station.html">Members by Station</a></li>
 						</ul>
 					</li>
@@ -94,50 +94,139 @@
 			<div class="row home_desc_bg">
 
 				<div class="page_title">
-					Members with Expired Certifications
+					Assign Certifications
 				</div>
 
 				<div class="home_desc">
 
           <div class="home_content">
 
-            <div id="expCertApp">
+            <div id="assignMemberCertApp">
 
-              <div class="filter row">
-                <div class="col-lg-4">
-                </div>
-                <div class="col-lg-2">
-                  <p>Choose Certification</p>
-                </div>
-                <div class="col-lg-2">
-                  <select v-model="filter.cert">
-                    <option value="">All Certifications</option>
-                    <option v-for="c in certifications">{{ c.certName }}</option>
-                  </select>
-                </div>
-                <div class="col-lg-4">
-                </div>
+              <div class="col-md-6">
+
+                <h3>Choose Member</h3>
+
+                <table class='table hover_table report_table'>
+                  <thead>
+                    <tr><th>ID</th><th>Name</th><th>Radio Number</th><th>Station Number</th><th>Status</th>
+              	  </thead>
+
+              	  <tbody>
+
+                    <tr v-for="m in members" @click="handleRowClickMember(m)">
+                      <td>{{ m.memberId }}</td>
+                      <td>{{ m.firstName }} {{ m.lastName }}</td>
+                      <td>{{ m.radioNumber }}</td>
+                      <td>{{ m.stationNumber }}</td>
+                      <td>{{ m.member_status }}</td>
+              		  </tr>
+
+              	  </tbody>
+                </table>
+
               </div>
 
-              <table class='table hover_table report_table'>
-                <thead>
-                  <tr><th>Member ID</th><th>Member Name</th><th>Certification ID</th><th>Certification Name</th><th>Certification Agency</th><th>Start Date</th><th>Expiration Date</th></tr>
-            	  </thead>
+              <div class="col-md-6">
 
-            	  <tbody>
+                <h3>Choose Certification</h3>
 
-                  <tr v-for="m in member_cert" v-if="!certActive(m.endDate) && (filter.cert=='' || filter.cert == m.certName)">
-                    <td>{{ m.memberId }}</td>
-                    <td>{{ m.firstName }} {{ m.lastName }}</td>
-            			  <td>{{ m.certId }}</td>
-                    <td>{{ m.certName }}</td>
-                    <td>{{ m.certAgency }}</td>
-                    <td>{{ m.startDate }}</td>
-                    <td>{{ m.endDate }}</td>
-            		  </tr>
+                <table class='table hover_table report_table'>
+                  <thead>
+                    <tr><th>Certification ID</th><th>Certifying Agency</th><th>Certification Name</th><th>Standard Expiration Period</th>
+              	  </thead>
 
-            	  </tbody>
-              </table>
+              	  <tbody>
+
+                    <tr v-for="c in certifications" @click="handleRowClickCert(c)">
+                      <td>{{ c.certId }}</td>
+                      <td>{{ c.certAgency }}</td>
+                      <td>{{ c.certName }}</td>
+                      <td>{{ c.stdExp }}</td>
+              		  </tr>
+
+              	  </tbody>
+
+                </table>
+
+              </div>
+
+              <br>
+              <br>
+
+              <div class="row">
+
+                <div class="col-lg-12">
+
+                  <form class="memberInputForm" @submit.prevent="handleSubmit">
+
+                    <div class="form-group row">
+                      <label for="member_id" class="col-sm-4 col-form-label">Member ID</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="member_id" placeholder="Member ID" v-model="member.memberId" readonly>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="member_fname" class="col-sm-4 col-form-label">First Name</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="member_fname" placeholder="First Name" v-model="member.firstName" readonly>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="member_lname" class="col-sm-4 col-form-label">Last Name</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="member_lname" placeholder="Last Name" v-model="member.lastName" readonly>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="cert_id" class="col-sm-4 col-form-label">Certification ID</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="cert_id" placeholder="Certification ID" v-model="cert.certId" readonly>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="cert_agency" class="col-sm-4 col-form-label">Certification Agency</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="cert_agency" placeholder="Certification Agency" v-model="cert.certAgency" readonly>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="cert_name" class="col-sm-4 col-form-label">Certification Nsme</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="cert_name" placeholder="Certification Name" v-model="cert.certName" readonly>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="start_date" class="col-sm-4 col-form-label">Start Date</label>
+                      <div class="col-sm-5">
+                        <input type="date" class="form-control" id="start_date" placeholder="Start Date" v-model="member_cert.startDate">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="std_exp" class="col-sm-4 col-form-label">Expiration Period</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="std_exp" placeholder="Expiration Period" v-model="cert.stdExp" readonly>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary button_table btn_add">Assign</button>
+                      </div>
+                    </div>
+
+                  </form>
+
+                </div>
+
+              </div>
 
             </div>
 
@@ -211,10 +300,8 @@
         </footer>
 
 	</div>
-
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="js/expCert.app.js"></script>
-
+  <script src="js/assignMemberCert.app.js"></script>
 </body>
 </html>

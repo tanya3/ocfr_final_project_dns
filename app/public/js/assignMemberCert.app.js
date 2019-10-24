@@ -1,5 +1,5 @@
-var updateCertApp = new Vue({
-  el: '#updateCertApp',
+var assignMemberCertApp = new Vue({
+  el: '#assignMemberCertApp',
   data: {
     members: [],
     certifications: [],
@@ -16,12 +16,12 @@ var updateCertApp = new Vue({
     fetchMembers() {
       fetch('api/members/')
       .then(response => response.json())
-      .then(json => { updateCertApp.members = json })
+      .then(json => { assignMemberCertApp.members = json })
     },
     fetchCertifications() {
       fetch('api/certifications/')
       .then(response => response.json())
-      .then(json => { updateCertApp.certifications = json })
+      .then(json => { assignMemberCertApp.certifications = json })
     },
     handleRowClickMember(member) {
       this.member=member;
@@ -33,8 +33,8 @@ var updateCertApp = new Vue({
       this.member_cert.memberId=this.member.memberId;
       this.member_cert.certId=this.cert.certId;
       this.member_cert.endDate=this.calculateEndDate(this.member_cert.startDate, this.cert.stdExp);
-      console.log(this.member_cert.endDate);
-      fetch('api/members/postCert.php', {
+      //console.log(this.member_cert.endDate);
+      fetch('api/member_cert/postCert.php', {
         method:'POST',
         body: JSON.stringify(this.member_cert),
         headers: {

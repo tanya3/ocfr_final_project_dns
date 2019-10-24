@@ -1,5 +1,5 @@
-var expCertApp = new Vue({
-  el: '#expCertApp',
+var expCertReportApp = new Vue({
+  el: '#expCertReportApp',
   data: {
     member_cert: [],
     filter: {
@@ -9,14 +9,14 @@ var expCertApp = new Vue({
   },
   methods: {
     fetchExpCert() {
-      fetch('api/members/fetchExpCert.php')
+      fetch('api/exp_cert_report/fetchExpCert.php')
       .then(response => response.json())
-      .then(json => { expCertApp.member_cert = json });
+      .then(json => { expCertReportApp.member_cert = json });
     },
     fetchCert() {
       fetch('api/certifications/')
       .then(response => response.json())
-      .then(json => { expCertApp.certifications = json })
+      .then(json => { expCertReportApp.certifications = json })
     },
     certActive(endDate) {
       if(moment(endDate)<moment()) {

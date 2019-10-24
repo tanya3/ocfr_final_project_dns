@@ -46,7 +46,7 @@ var memberViewApp = new Vue({
         stationNumber: '',
         radioNumber: ''
       }
-      this.member=null
+      this.member= null;
     },
     handleResetAfterDelete() {
       this.member = null;
@@ -81,6 +81,7 @@ var memberViewApp = new Vue({
     },
     handleDeleteMember(m) {
       this.deleteMember=m;
+      this.member=null;
       fetch('api/members/postDelete.php', {
         method:'POST',
         body: JSON.stringify(this.deleteMember),
@@ -91,7 +92,6 @@ var memberViewApp = new Vue({
       .then(response => response.json())
       .then(json => { memberViewApp.members = json })
       .then(response => {alert('Deleted!')})
-      this.handleReset();
     }
   },
   created() {
