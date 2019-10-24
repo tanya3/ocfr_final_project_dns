@@ -35,6 +35,13 @@ var certificationViewApp = new Vue({
       .then(response => response.json())
       .then(json => { certificationViewApp.member_cert = json });
     },
+    // handleRowClick(certification) {
+    //     this.cert=certification;
+    //     fetch('api/certifications/fetchMem.php/?certId='+certification.certId)
+    //     .then(response => response.json())
+    //     .then(json => { certificationViewApp.member_cert = json });
+    //    },
+    //
     handleReset() {
           this.recordCert = {
             certId: '',
@@ -54,12 +61,7 @@ var certificationViewApp = new Vue({
       handleResetAfterDelete() {
           this.cert = null;
         },
-      handleRowClick(certification) {
-          this.cert=certification;
-          fetch('api/certifications/fetchMem.php/?certId='+certification.certId)
-          .then(response => response.json())
-          .then(json => { certificationViewApp.member_cert = json });
-         },
+
         certActive(endDate) {
           if(moment(endDate)<moment()) {
             return 0;
@@ -96,6 +98,7 @@ var certificationViewApp = new Vue({
       .then(response => {alert('Deleted!')})
       this.handleReset();
     }
+
 },
   created() {
     this.fetchCertifications();
