@@ -44,7 +44,6 @@ var certificationViewApp = new Vue({
             certName: '',
             certAgency: '',
             stdExp: '',
-
           }
           this.cert=null
         },
