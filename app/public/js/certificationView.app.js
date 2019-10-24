@@ -35,7 +35,6 @@ var certificationViewApp = new Vue({
       .then(response => response.json())
       .then(json => { certificationViewApp.member_cert = json });
     },
-    },
     handleReset() {
           this.recordCert = {
             certId: '',
@@ -97,7 +96,6 @@ var certificationViewApp = new Vue({
       .then(response => {alert('Deleted!')})
       this.handleReset();
     }
-
 },
   created() {
     this.fetchCertifications();
