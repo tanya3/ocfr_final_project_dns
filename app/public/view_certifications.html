@@ -110,13 +110,13 @@
 
           	  <tbody>
 
-                <tr v-for="c in certifications">
+                <tr v-for="c in certifications" @click="handleRowClick(c)">
                   <td>{{ c.certId }}</td>
                   <td>{{ c.certAgency }}</td>
                   <td>{{ c.certName }}</td>
                   <td>{{ c.stdExp }}</td>
                   <td>
-                    <button type="submit" class="btn btn-primary button_table">Edit</button>
+                    <button type="submit" class="btn btn-primary button_table" @click="handleEditCertificationClick(c)">Edit</button>
                   </td>
                   <td>
                     <button type="submit" class="btn btn-primary button_table" @click="handleDeleteCert(c)">Delete</button>

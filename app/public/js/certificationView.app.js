@@ -6,6 +6,7 @@ var certificationViewApp = new Vue({
     editCert: null,
     deleteCert: {},
     recordCert: {},
+    member_cert: [],
   },
   methods: {
     fetchCertifications() {
@@ -29,12 +30,14 @@ var certificationViewApp = new Vue({
       })
       this.handleReset();
     },
-    handleRowClick(certification) {
-      this.certification=certification;
-      fetch('api/certifications/fetctMem.php/?certId='+certification.certId)
+
+    handleRowClick(cert) {
+      this.cert=cert;
+      fetch('api/certifications/fetctMem.php/?certId='+cert.certId)
       .then(response => response.json())
       .then(json => { certificationViewApp.member_cert = json });
     },
+
     // handleRowClick(certification) {
     //     this.cert=certification;
     //     fetch('api/certifications/fetchMem.php/?certId='+certification.certId)
