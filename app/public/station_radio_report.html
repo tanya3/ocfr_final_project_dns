@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-	   Members with Expired Certifications
+	   Members according to Radio Number and Station Number
 	</title>
 
 	<link href="css/style.css" rel="stylesheet">
@@ -16,7 +16,6 @@
 	<!--Compiled and minified JavaScript-->
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
 </head>
 <body>
@@ -101,39 +100,23 @@
 
           <div class="home_content">
 
-            <div id="expCertReportApp">
+            <div id="stationRadioReportApp">
 
-              <div class="filter row">
-                <div class="col-lg-4">
-                </div>
-                <div class="col-lg-2">
-                  <p>Choose Certification</p>
-                </div>
-                <div class="col-lg-2">
-                  <select v-model="filter.cert">
-                    <option value="">All Certifications</option>
-                    <option v-for="c in certifications">{{ c.certName }}</option>
-                  </select>
-                </div>
-                <div class="col-lg-4">
-                </div>
-              </div>
 
-              <table class='table hover_table report_table'>
+              <table class='table hover_table report_table' v-for="s in stations">
                 <thead>
-                  <tr><th>Member ID</th><th>Member Name</th><th>Certification ID</th><th>Certification Name</th><th>Certification Agency</th><th>Start Date</th><th>Expiration Date</th></tr>
+                  <tr><th colspan="5">Station Number: {{ s.stationNumber }}</th></tr>
+                  <tr><th>Station Number</th><th>Radio Number</th><th>Member ID</th><th>Member Name</th><th>Email Address</tr>
             	  </thead>
 
             	  <tbody>
 
-                  <tr v-for="m in member_cert" v-if="!certActive(m.endDate) && (filter.cert=='' || filter.cert == m.certName)">
+                  <tr v-for="m in members" v-if="m.stationNumber==s.stationNumber">
+                    <td>{{ m.stationNumber }}</td>
+                    <td>{{ m.radioNumber }}</td>
                     <td>{{ m.memberId }}</td>
                     <td>{{ m.firstName }} {{ m.lastName }}</td>
-            			  <td>{{ m.certId }}</td>
-                    <td>{{ m.certName }}</td>
-                    <td>{{ m.certAgency }}</td>
-                    <td>{{ m.startDate }}</td>
-                    <td>{{ m.endDate }}</td>
+            			  <td>{{ m.member_email }}</td>
             		  </tr>
 
             	  </tbody>
@@ -214,7 +197,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="js/expCertReport.app.js"></script>
+  <script src="js/stationRadioReport.app.js"></script>
 
 </body>
 </html>
