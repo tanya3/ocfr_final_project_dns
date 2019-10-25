@@ -38,13 +38,13 @@ var certificationViewApp = new Vue({
       .then(json => { certificationViewApp.member_cert = json });
     },
 
-    // handleRowClick(certification) {
-    //     this.cert=certification;
-    //     fetch('api/certifications/fetchMem.php/?certId='+certification.certId)
-    //     .then(response => response.json())
-    //     .then(json => { certificationViewApp.member_cert = json });
-    //    },
-    //
+    handleRowClick(cert) {
+        this.cert=cert;
+        fetch('api/certifications/fetchMem.php/?certId='+cert.certId)
+        .then(response => response.json())
+        .then(json => { certificationViewApp.member_cert = json });
+       },
+
     handleReset() {
           this.recordCert = {
             certId: '',
