@@ -4,8 +4,16 @@
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
+if (isset($_GET['certId'])) {
+  $stmt = $db->prepare(
+    'SELECT * FROM Certifications
+    WHERE certId = ?'
+  );
+  $stmt->execute([$_GET['certId']]);
+} else {
   $stmt = $db->prepare('SELECT * FROM Certifications');
   $stmt->execute();
+}
 
 $certifications = $stmt->fetchAll();
 
