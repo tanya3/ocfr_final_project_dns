@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-	   Home
+	   Members according to Radio Number and Station Number
 	</title>
 
 	<link href="css/style.css" rel="stylesheet">
@@ -17,7 +17,6 @@
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
 </head>
 <body>
 
@@ -27,7 +26,7 @@
 
 			<div class="bg-info col-lg-2 col-md-2 col-sm-4 col-xs-12 header_logo_bg"><img class="header_logo" src="css/logo.png"></div>
 
-			<div class="col-lg-7 col-md-7 col-sm-8 col-xs-12 header_FCRE"><h1>Fire Rescue</h1></div>
+			<div class="col-lg-7 col-md-7 col-sm-8 col-xs-12 header_FCRE"><h1>Oconee County Fire Rescue</h1></div>
 
 			<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 text-right header_socmed">
 			<p>
@@ -94,49 +93,36 @@
 			<div class="row home_desc_bg">
 
 				<div class="page_title">
-					Home
+					Members with Expired Certifications
 				</div>
 
 				<div class="home_desc">
 
           <div class="home_content">
 
-          					<h1>Welcome to Oconee County Fire Rescue University</h1>
-          					<h3><strong>Here, rescuing and protecting people is our first priority</strong></h3>
+            <div id="stationRadioReportApp">
 
-          						<br>
-          					<p>	 Our members have the ability to help people in Oconee across a host of topics. Need help? OCFR will train your staff </p>
 
-          					<div class="row row2_home">
+              <table class='table hover_table report_table' v-for="s in stations">
+                <thead>
+                  <tr><th colspan="5">Station Number: {{ s.stationNumber }}</th></tr>
+                  <tr><th>Station Number</th><th>Radio Number</th><th>Member ID</th><th>Member Name</th><th>Email Address</tr>
+            	  </thead>
 
-          				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 home_services">
-          					<h3>Our Services</h3>
-          				    <ul>
-                        <li>Service 1</li>
-                        <li>Service 2</li>
-                        <li>Service 3</li>
-                        <li>Service 4</li>
-                   </ul>
-          				</div>
+            	  <tbody>
 
-          				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 home_why_Hoosier">
-          					<h3>Why OCFR</h3>
-          					<ul>
-          						<li>Reason 1</li>
-                      <li>Reason 2</li>
-                      <li>Reason 3</li>
-          					</ul>
-          				</div>
+                  <tr v-for="m in members" v-if="m.stationNumber==s.stationNumber">
+                    <td>{{ m.stationNumber }}</td>
+                    <td>{{ m.radioNumber }}</td>
+                    <td>{{ m.memberId }}</td>
+                    <td>{{ m.firstName }} {{ m.lastName }}</td>
+            			  <td>{{ m.member_email }}</td>
+            		  </tr>
 
-          			</div>
+            	  </tbody>
+              </table>
 
-          			<div class="row home_quote">
-
-          				<p><q>Quote 1</q> -Tom Gregory</p>
-
-          				<p><q>Quote 2</q> -Hillol Bala</p>
-
-          			</div>
+            </div>
 
           </div>
 
@@ -208,6 +194,10 @@
         </footer>
 
 	</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="js/stationRadioReport.app.js"></script>
 
 </body>
 </html>

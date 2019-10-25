@@ -17,7 +17,8 @@ $certId = $_POST['certId'];
 $stmt->execute([
   $_POST['certName'],
   $_POST['certAgency'],
-  $_POST['stdExp']
+  $_POST['stdExp'],
+  $_POST['certId']
 ]);                                   //$stmt object executes the query and the $stmt object references to the result set
 
 // $stmt1 = $db->prepare('SELECT MAX(memberId) FROM Members');

@@ -33,18 +33,11 @@ var certificationViewApp = new Vue({
 
     handleRowClick(cert) {
       this.cert=cert;
-      fetch('api/certifications/fetctMem.php/?certId='+cert.certId)
+      fetch('api/certifications/fetchMem.php/?certId='+cert.certId)
       .then(response => response.json())
       .then(json => { certificationViewApp.member_cert = json });
     },
 
-    // handleRowClick(certification) {
-    //     this.cert=certification;
-    //     fetch('api/certifications/fetchMem.php/?certId='+certification.certId)
-    //     .then(response => response.json())
-    //     .then(json => { certificationViewApp.member_cert = json });
-    //    },
-    //
     handleReset() {
           this.recordCert = {
             certId: '',
@@ -75,7 +68,7 @@ var certificationViewApp = new Vue({
         },
         handleEditCertificationClick(c) {
             this.editCert=c;
-            this.$refs.certification_address.focus();
+            this.$refs.cert_address.focus();
           },
       handleEditCertification(event) {
           fetch('api/certifications/certEdit.php', {

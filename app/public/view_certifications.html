@@ -81,7 +81,7 @@
 
 						<ul class="dropdown-menu">
 							<li><a href="exp_cert_report.html">Expired Certifications</a></li>
-							<li><a  href="members_by_station.html">Members by Station</a></li>
+							<li><a  href="station_radio_report.html">Members by Station</a></li>
 						</ul>
 					</li>
 
@@ -182,9 +182,8 @@
                       <td>{{ c.firstName }}{{ c.lastName }}</td>
                       <td>{{ c.radioNumber }}</td>
                       <td>{{ c.stationNumber }}</td>
-                      <td>{{ c.member_status }}</td>
-                      <!-- <td v-if="certActive(m.endDate)">Active</td>
-                      <td v-if="!certActive(m.endDate)">Inactive</td> -->
+                      <td v-if="certActive(c.endDate)">Active</td>
+                      <td v-if="!certActive(c.endDate)">Inactive</td>
                     </tr>
 
                   </tbody>
@@ -248,7 +247,7 @@
               <div class="form-group row">
                 <label for="cert_name" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-5">
-                  <input type="text" class="form-control" id="cert_name" placeholder="Name" v-model="editCert.certName">
+                  <input type="text" class="form-control" id="cert_name" placeholder="Name" v-model="editCert.certName" ref="cert_address">
                 </div>
               </div>
 
