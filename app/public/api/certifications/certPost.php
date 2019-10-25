@@ -18,7 +18,7 @@ $stmt->execute([
   $guid,
   $_POST['certName'],
   $_POST['certAgency'],
-  $_POST['stdExp'],
+  $_POST['stdExp']
 
 ]);                                   //$stmt object executes the query and the $stmt object references to the result set
 
