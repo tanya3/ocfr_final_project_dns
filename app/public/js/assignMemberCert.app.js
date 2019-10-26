@@ -10,7 +10,12 @@ var assignMemberCertApp = new Vue({
       certId: '',
       startDate: '',
       endDate: ''
-    }
+    },
+    existing_mem_cert: [],
+    indicator: {
+      flag: '0'
+    },
+    emc: {}
   },
   methods: {
     fetchMembers() {
@@ -23,6 +28,11 @@ var assignMemberCertApp = new Vue({
       .then(response => response.json())
       .then(json => { assignMemberCertApp.certifications = json })
     },
+    fetchExistingMemCert() {
+      fetch('api/member_cert/fetchMemberCert.php')
+      .then(response => response.json())
+      .then(json => { assignMemberCertApp.existing_mem_cert = json })
+    },
     handleRowClickMember(member) {
       this.member=member;
     },
@@ -33,16 +43,36 @@ var assignMemberCertApp = new Vue({
       this.member_cert.memberId=this.member.memberId;
       this.member_cert.certId=this.cert.certId;
       this.member_cert.endDate=this.calculateEndDate(this.member_cert.startDate, this.cert.stdExp);
-      //console.log(this.member_cert.endDate);
-      fetch('api/member_cert/postCert.php', {
-        method:'POST',
-        body: JSON.stringify(this.member_cert),
-        headers: {
-          "Content-Type": "application/json; charset=utf-8"
+      for(m in this.existing_mem_cert) {
+        if((this.existing_mem_cert[m].memberId==this.member_cert.memberId) && (this.existing_mem_cert[m].certId==this.member_cert.certId)) {
+          this.indicator.flag=1;
+          console.log(this.indicator.flag);
         }
-      }).then(response => {alert('Assigned!')})
-      console.log("done");
-      this.handleReset();
+      };
+      if(this.indicator.flag==1) {
+        fetch('api/member_cert/postCertUpdate.php', {
+          method:'POST',
+          body: JSON.stringify(this.member_cert),
+          headers: {
+            "Content-Type": "application/json; charset=utf-8"
+          }
+        }).then(response => {alert('Assigned!')})
+        console.log("done");
+        this.handleReset();
+        this.indicator.flag=0;
+      }
+      else {
+        fetch('api/member_cert/postCert.php', {
+          method:'POST',
+          body: JSON.stringify(this.member_cert),
+          headers: {
+            "Content-Type": "application/json; charset=utf-8"
+          }
+        }).then(response => {alert('Assigned!')})
+        console.log("done");
+        this.handleReset();
+        this.indicator.flag=0;
+      }
     },
     calculateEndDate(startDate, stdExp) {
       return moment(startDate).add(stdExp, 'years').format('YYYY-MM-DD')
@@ -72,5 +102,6 @@ var assignMemberCertApp = new Vue({
   created() {
     this.fetchMembers();
     this.fetchCertifications();
+    this.fetchExistingMemCert();
   }
 });

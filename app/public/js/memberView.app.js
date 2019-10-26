@@ -10,7 +10,7 @@ var memberViewApp = new Vue({
   },
   methods: {
     fetchMembers() {
-      fetch('api/members/')
+      fetch('api/members/index.php')
       .then(response => response.json())
       .then(json => { memberViewApp.members = json })
     },
