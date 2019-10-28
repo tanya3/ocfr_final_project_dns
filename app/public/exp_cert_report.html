@@ -139,6 +139,8 @@
             	  </tbody>
               </table>
 
+              <button class="btn btn-primary button_table" @click='downloadCSV({ filename: "ExpiredCertificationsReport.csv" });'>Download CSV<br><small>(Check Downloads folder)</small></a>
+
             </div>
 
           </div>
@@ -213,6 +215,7 @@
 	</div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/json2csv"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="js/expCertReport.app.js"></script>
 
