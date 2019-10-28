@@ -24,10 +24,7 @@ var memberViewApp = new Vue({
       })
       .then( response => response.json() )
       .then( json => { memberViewApp.members.push(json[0]) })
-      .catch( err => {
-        console.error('RECORD POST ERROR:');
-        console.error(err);
-      })
+      .catch( err =>  {alert(err)})
       this.handleReset();
     },
     handleReset() {
@@ -76,7 +73,8 @@ var memberViewApp = new Vue({
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         }
-      }).then(response => {alert('Updated!')})
+      })
+      .catch( err =>  {alert(err)})
       this.handleReset();
     },
     handleDeleteMember(m) {

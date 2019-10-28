@@ -233,70 +233,70 @@
                 <div class="form-group row">
                   <label for="member_fname" class="col-sm-4 col-form-label">First Name</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_fname" placeholder="First Name" v-model="recordMember.firstName">
+                    <input type="text" class="form-control" id="member_fname" placeholder="First Name" v-model="recordMember.firstName" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_lname" class="col-sm-4 col-form-label">Last Name</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_lname" placeholder="Last Name" v-model="recordMember.lastName">
+                    <input type="text" class="form-control" id="member_lname" placeholder="Last Name" v-model="recordMember.lastName" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_rno" class="col-sm-4 col-form-label">Radio Number</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_rno" placeholder="Radio Number" v-model="recordMember.radioNumber">
+                    <input type="text" class="form-control" id="member_rno" pattern="^[0-9]+$" placeholder="Radio Number" v-model="recordMember.radioNumber" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_sno" class="col-sm-4 col-form-label">Station Number</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_sno" placeholder="Station Number" v-model="recordMember.stationNumber">
+                    <input type="text" class="form-control" id="member_sno" pattern="^[0-9]+$" placeholder="Station Number" v-model="recordMember.stationNumber" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="member_status" class="col-sm-4 col-form-label">Status</label>
+                  <label for="member_status" class="col-sm-4 col-form-label">Status<br><small>(Enter "Active" or "Inactive")</small></label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_status" placeholder="Active/Inactive" v-model="recordMember.member_status">
+                    <input type="text" class="form-control" id="member_status" placeholder="Active/Inactive" v-model="recordMember.member_status" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_address" class="col-sm-4 col-form-label">Address</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_address" placeholder="Address" v-model="recordMember.member_address">
+                    <input type="text" class="form-control" id="member_address" placeholder="Address" v-model="recordMember.member_address" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_email" class="col-sm-4 col-form-label">Email Address</label>
                   <div class="col-sm-5">
-                    <input type="email" class="form-control" id="member_email" placeholder="Email Address" v-model="recordMember.member_email">
+                    <input type="email" class="form-control" id="member_email" placeholder="Email Address" v-model="recordMember.member_email" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="member_pno" class="col-sm-4 col-form-label">Phone Number</label>
+                  <label for="member_pno" class="col-sm-4 col-form-label">Phone Number<br><small>(Enter a 10 digit phone number)</small></label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_pno" placeholder="Phone Number" v-model="recordMember.member_phoneNumber">
+                    <input type="text" class="form-control" id="member_pno" pattern="^\d{10}$" placeholder="Phone Number" v-model="recordMember.member_phoneNumber" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_dob" class="col-sm-4 col-form-label">Date of Birth</label>
                   <div class="col-sm-5">
-                    <input type="date" class="form-control" id="member_dob" placeholder="DoB" v-model="recordMember.member_dob">
+                    <input type="date" class="form-control" id="member_dob" placeholder="DoB" v-model="recordMember.member_dob" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_gender" class="col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_gender" placeholder="M/F" v-model="recordMember.member_gender">
+                    <input type="text" class="form-control" id="member_gender" pattern="[MF]" placeholder="M/F" v-model="recordMember.member_gender">
                   </div>
                 </div>
 
@@ -327,19 +327,19 @@
                 <div class="form-group row">
                   <label for="member_rno" class="col-sm-4 col-form-label">Radio Number</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_rno" placeholder="Radio Number" v-model="editMember.radioNumber">
+                    <input type="text" class="form-control" id="member_rno" pattern="^[0-9]+$" placeholder="Radio Number" v-model="editMember.radioNumber">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="member_sno" class="col-sm-4 col-form-label">Station Number</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_sno" placeholder="Station Number" v-model="editMember.stationNumber">
+                    <input type="text" class="form-control" id="member_sno" pattern="^[0-9]+$" placeholder="Station Number" v-model="editMember.stationNumber">
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="member_status" class="col-sm-4 col-form-label">Status</label>
+                  <label for="member_status" class="col-sm-4 col-form-label">Status<br><small>(Enter "Active" or "Inactive")</small></label>
                   <div class="col-sm-5">
                     <input type="text" class="form-control" id="member_status" placeholder="Active/Inactive" v-model="editMember.member_status">
                   </div>
@@ -360,9 +360,9 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="member_pno" class="col-sm-4 col-form-label">Phone Number</label>
+                  <label for="member_pno" class="col-sm-4 col-form-label">Phone Number<br><small>(Enter a 10 digit phone number)</small></label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_pno" placeholder="Phone Number" v-model="editMember.member_phoneNumber">
+                    <input type="text" class="form-control" id="member_pno" pattern="^\d{10}$"  placeholder="Phone Number" v-model="editMember.member_phoneNumber">
                   </div>
                 </div>
 
@@ -376,7 +376,7 @@
                 <div class="form-group row">
                   <label for="member_gender" class="col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" id="member_gender" placeholder="M/F" v-model="editMember.member_gender">
+                    <input type="text" class="form-control" pattern="[MF]" id="member_gender" placeholder="M/F" v-model="editMember.member_gender">
                   </div>
                 </div>
 
@@ -412,7 +412,7 @@
                         <div class="footer-title">General</div>
                         <ul class="list-unstyled">
                             <li><a class="footerlinks" href="index.html">Home</a></li>
-                            
+
                         </ul>
                     </div>
                 </div>
