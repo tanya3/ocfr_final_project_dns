@@ -4,7 +4,7 @@
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$stmt = $db->prepare( 'SELECT * FROM MemberCert mcert, Certifications c, Members m WHERE mcert.certId=c.certId AND mcert.memberId=m.memberId');
+$stmt = $db->prepare( 'SELECT * FROM MemberCert mcert, Certifications c, Members m WHERE mcert.certId=c.certId AND mcert.memberId=m.memberId AND mcert.endDate<CURDATE()');
 $stmt->execute();
 
 $membercert = $stmt->fetchAll();
