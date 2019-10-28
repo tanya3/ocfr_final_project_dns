@@ -15,7 +15,7 @@ var stationRadioReportApp = new Vue({
       .then(response => response.json())
       .then(json => { stationRadioReportApp.stations = json })
     },
-    convertArrayOfObjectsToCSV(args) {
+    convertArrayOfObjectsToCSV(args) {                                        //credits: https://halistechnology.com/2015/05/28/use-javascript-to-export-your-data-as-csv/
         var result, ctr, keys, columnDelimiter, lineDelimiter, data;
 
         data = args.data || null;
